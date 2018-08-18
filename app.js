@@ -19,12 +19,10 @@ var upload = multer({
 });
 
 app.use('/good',goodRoute);
-app.get('/', function (req, res) {
-    res.send('Hello World!');
-});
 
 app.post('/img',upload.single('img'),function (req,res) {
-    res.json({message:'ok'});
+    let imgPath =req.file.path;
+    res.json({path:imgPath});
 });
 
 const server = app.listen(3000, function () {
