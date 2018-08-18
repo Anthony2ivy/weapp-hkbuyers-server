@@ -11,7 +11,7 @@ const cert=fs.readFileSync('./bin/www.shitaidaigou.club.crt','utf-8');
 
 let storage = multer.diskStorage({
    destination: function (req,file,cd) {
-       cd(null,'imgs/')
+       cd(null,'./imgs/')
    } ,
     filename: function (req,file,cd) {
        let index = file.originalname.lastIndexOf('.');
