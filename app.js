@@ -11,7 +11,7 @@ const cert=fs.readFileSync('./bin/www.shitaidaigou.club.crt','utf-8');
 
 let storage = multer.diskStorage({
    destination: function (req,file,cd) {
-       cd(null,'imgs\\')
+       cd(null,'imgs/')
    } ,
     filename: function (req,file,cd) {
        let index = file.originalname.lastIndexOf('.');
@@ -34,7 +34,7 @@ const server =https.createServer({
 },app);
 
 
-server.listen(3000, function () {
+server.listen(443, function () {
     let host = server.address().address;
     let port = server.address().port;
     console.log('Example app listening at https://%s:%s', host, port);
