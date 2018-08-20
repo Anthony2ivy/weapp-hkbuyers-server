@@ -19,12 +19,17 @@ router.post('/',urlencode,function (req,res) {
     let createGood = async function(req){
         let {images,salePrice,buyPrice,tags,title,barcode,storage} = req.body;
         let instance={images,salePrice,buyPrice,tags,title,barcode,storage};
+        console.log(req.body);
+        console.log(instance);
         let createdGood = await good.create(instance);
-        let colors = await Promise.all(req.body.colors.map(color => {
-            color.goodId=goodId;
-            return goodColor.create(color);
+        createdGood = createdGood.get({plain:true});
+        let colorsObj = JSON.parse(req.body.colors);
+        await goodColor.bulkCreate(colorsObj.map(color => {
+            let newColor=Object.assign({goodId:createdGood.goodId},color);
+            return  newColor;
         }));
-        createdGood.colors = colors;
+        let colorsResult = await goodColor.findAll({where:{goodId:createdGood.goodId}});
+        createdGood.colors=colorsResult;
         return await createdGood;
     };
     createGood(req).then(result => {

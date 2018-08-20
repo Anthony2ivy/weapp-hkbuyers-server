@@ -6,7 +6,7 @@ const  GoodColor = db.define('good-color',{
     storage:{type:Sequlize.DataTypes.INTEGER},
     buyPrice:{type:Sequlize.DataTypes.INTEGER},
     salePrice:{type:Sequlize.DataTypes.INTEGER},
-    barCode:{type:Sequlize.DataTypes.STRING}
+    barcode:{type:Sequlize.DataTypes.STRING}
 });
 
 GoodColor.sync();
