@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const good = require('../dao/good');
+const goodColor = require('../dao/goodColor');
 const bodyParser = require('body-parser');
 const multipart = require('connect-multiparty');
 const multipartMiddleware =multipart();
@@ -15,8 +16,18 @@ router.get('/',urlencode,function (req,res) {
 });
 
 router.post('/',urlencode,function (req,res) {
-    console.log(req.body);
-    good.create(req.body).then(result => {
+    let createGood = async function(req){
+        let {images,salePrice,buyPrice,tags,title,barcode,storage} = req.body;
+        let instance={images,salePrice,buyPrice,tags,title,barcode,storage};
+        let createdGood = await good.create(instance);
+        let colors = await Promise.all(req.body.colors.map(color => {
+            color.goodId=goodId;
+            return goodColor.create(color);
+        }));
+        createdGood.colors = colors;
+        return await createdGood;
+    };
+    createGood(req).then(result => {
         res.send(result);
     });
 });
