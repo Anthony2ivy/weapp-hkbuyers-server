@@ -1,12 +1,12 @@
 const db = require('../config/db')
-const Sequlize = require('sequelize')
+const Sequelize = require('sequelize')
 const  GoodColor = db.define('good-color',{
-    goodId:{type:Sequlize.DataTypes.INTEGER,primaryKey:true} ,
-    color:{type:Sequlize.DataTypes.STRING,primaryKey: true},
-    storage:{type:Sequlize.DataTypes.INTEGER},
-    buyPrice:{type:Sequlize.DataTypes.INTEGER},
-    salePrice:{type:Sequlize.DataTypes.INTEGER},
-    barcode:{type:Sequlize.DataTypes.STRING}
+    goodId:{type:Sequelize.DataTypes.INTEGER,primaryKey:true} ,
+    color:{type:Sequelize.DataTypes.STRING,primaryKey: true},
+    storage:{type:Sequelize.DataTypes.INTEGER},
+    buyPrice:{type:Sequelize.DataTypes.INTEGER},
+    salePrice:{type:Sequelize.DataTypes.INTEGER},
+    barcode:{type:Sequelize.DataTypes.STRING}
 });
 
 GoodColor.sync();

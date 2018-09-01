@@ -2,6 +2,7 @@ const Good =  require('./dao/good');
 const express = require('express');
 const bodyParser = require('body-parser');
 const goodRoute =require('./routers/goodRouter');
+const tagRoute = require('./routers/tagRouter');
 const app = express();
 const multer=require("multer");
 const fs = require('fs');
@@ -23,6 +24,7 @@ var upload = multer({
 });
 
 app.use('/good',goodRoute);
+app.use('/tag',tagRoute);
 
 app.post('/img',upload.single('img'),function (req,res) {
     let imgPath =req.file.path;

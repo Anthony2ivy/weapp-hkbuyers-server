@@ -1,14 +1,13 @@
 const db = require('../config/db')
-const Sequlize = require('sequelize')
+const Sequelize = require('sequelize')
 const  Good = db.define('good',{
-    goodId:{type:Sequlize.DataTypes.INTEGER,autoIncrement:true,primaryKey:true} ,
-    images: Sequlize.DataTypes.STRING,
-    salePrice: Sequlize.DataTypes.INTEGER,
-    buyPrice: Sequlize.DataTypes.INTEGER,
-    tags:Sequlize.DataTypes.STRING,
-    title:Sequlize.DataTypes.STRING,
-    barcode:Sequlize.DataTypes.STRING,
-    storage:Sequlize.DataTypes.INTEGER
+    goodId:{type:Sequelize.DataTypes.INTEGER,autoIncrement:true,primaryKey:true} ,
+    images: Sequelize.DataTypes.STRING,
+    salePrice: Sequelize.DataTypes.INTEGER,
+    buyPrice: Sequelize.DataTypes.INTEGER,
+    title:Sequelize.DataTypes.STRING,
+    barcode:Sequelize.DataTypes.STRING,
+    storage:Sequelize.DataTypes.INTEGER
 });
 
 Good.sync();
